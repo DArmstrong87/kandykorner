@@ -1,5 +1,6 @@
 import React from "react"
 import { Locations } from "./Locations.js"
+import { Products } from "./Products.js"
 
 export const KandyKornerMain = () => {
 
@@ -7,6 +8,7 @@ export const KandyKornerMain = () => {
         <>
             <h1 key={`KandyKorner`}>Kandy Korner</h1>
             {Locations()}
+            {Products()}
         </>
     )
 }

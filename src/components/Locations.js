@@ -16,9 +16,12 @@ export const Locations = () => {
 
     return (
         <>
-            {locations.map((location) => {
-                return <p key={`location--${location.id}`}>{location.name}</p>
-            })}
+            <h2>Locations</h2>
+            <ul>
+                {locations.map((location) => {
+                    return <li key={`location--${location.id}`}>{location.name}</li>
+                })}
+            </ul>
         </>
     )
 }

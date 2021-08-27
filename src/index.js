@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import KandyKorner, { KandyKornerMain } from './components/KandyKorner.js'
+import  { KandyKornerMain } from './components/KandyKorner.js'
 
 ReactDOM.render(
   <React.StrictMode>

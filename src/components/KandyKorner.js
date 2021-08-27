@@ -1,6 +1,7 @@
 import React from "react"
 import { Locations } from "./Locations.js"
-import { Products } from "./Products.js"
+import { ProductList } from "./Products/Products.js"
+import { ProductTypes } from "./Products/ProductTypes.js"
 
 export const KandyKornerMain = () => {
 
@@ -8,7 +9,8 @@ export const KandyKornerMain = () => {
         <>
             <h1 key={`KandyKorner`}>Kandy Korner</h1>
             {Locations()}
-            {Products()}
+            {ProductList()}
+            {ProductTypes()}
         </>
     )
 }

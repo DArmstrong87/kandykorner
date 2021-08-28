@@ -1,6 +1,6 @@
 import React from "react"
 import { Route } from "react-router-dom"
-import { Locations } from "./Locations.js"
+import { Locations } from "./locations/Locations.js"
 import { ProductList } from "./Products/Products.js"
 import { ProductTypes } from "./Products/ProductTypes.js"
 

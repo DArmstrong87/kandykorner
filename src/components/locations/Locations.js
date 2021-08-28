@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react"
+import './Locations.css'
 
 export const Locations = () => {
     const [locations, setLocations] = useState([])
@@ -20,7 +21,7 @@ export const Locations = () => {
             <ul>
                 {locations.map((location) => {
                     return <li key={`location--${location.id}`}>{location.name}
-                        <ul>
+                        <ul className={'location__sublist'}>
                             <li>Address: {location.address}</li>
                             <li>{location.sqFt} sqft</li>
                         </ul>

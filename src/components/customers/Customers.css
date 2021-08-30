@@ -1,0 +1,13 @@
+.myOrders {
+    list-style-type: '🍪';
+}
+.myOrders li {
+    padding-left: 5px;
+}
+
+.customerList {
+    list-style-type: '🤹🏻‍♀️';
+}
+.customerList li{
+    padding-left: 5px;
+}

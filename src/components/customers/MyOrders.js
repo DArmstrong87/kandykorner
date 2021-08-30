@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react"
+import './Customers.css'
 
 export const Purchases = () => {
     const [purchases, setPurchases] = useState([])
@@ -17,7 +18,7 @@ export const Purchases = () => {
     return (
         <>
             <h2>My Orders</h2>
-            <ul>
+            <ul className='myOrders'>
                 {purchases.map(purchase => {
                     return <li key={`purchase--${purchase.id}`}>{purchase.product.name} - ${purchase.product.price.toFixed(2)}</li>
                 })}

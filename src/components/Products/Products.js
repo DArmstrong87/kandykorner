@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react"
-import { useHistory } from "react-router-dom"
 import './Products.css'
 
 export const ProductList = () => {
     const [products, setProducts] = useState([])
-    const history = useHistory()
 
     useEffect(
         () => {

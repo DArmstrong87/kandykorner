@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react"
+import './Customers.css'
 
 export const CustomerList = () => {
     const [customers, setCustomers] = useState([])
@@ -17,7 +18,7 @@ export const CustomerList = () => {
     return (
         <>
             <h2>Customers</h2>
-            <ul>
+            <ul className='customerList'>
                 {customers.map(customer => {
                     return <li key={`customer--${customer.id}`}>{customer.name}</li>
                 })}

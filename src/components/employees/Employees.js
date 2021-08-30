@@ -31,11 +31,11 @@ export const EmployeeList = () => {
                     Hire Employee</button>
             </div>
             <h2>Employees</h2>
-            <ul>
+            <ul className='employeeList'>
                 {employees.map(employee => {
                     return <li key={`employee--${employee.id}`}>{employee.name}
                         <button className='fireButton' key={`fire--${employee.id}`}
-                            onClick={() => {fireEmployee(employee.id)}}
+                            onClick={() => { fireEmployee(employee.id) }}
                         >Fire Employee</button>
                     </li>
                 })}

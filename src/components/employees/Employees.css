@@ -1,3 +1,11 @@
 .fireButton {
     margin-left: 15px;
+    background-color: lightcoral;
+}
+
+.employeeList {
+    list-style-type: '🍫';
+}
+.employeeList li{
+    padding-left: 5px;
 }

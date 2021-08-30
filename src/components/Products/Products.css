@@ -8,3 +8,10 @@
 .productList li {
     padding-left: 5px;
 }
+
+.kategories {
+    list-style-type: '🍩';
+}
+.kategories li {
+    padding-left: 5px;
+}

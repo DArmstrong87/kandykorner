@@ -18,7 +18,7 @@ export const Locations = () => {
     return (
         <>
             <h2>Locations</h2>
-            <ul>
+            <ul className="locationList">
                 {locations.map((location) => {
                     return <li key={`location--${location.id}`}>{location.name}
                         <ul className={'location__sublist'}>

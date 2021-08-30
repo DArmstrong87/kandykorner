@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react"
+import { useHistory } from "react-router-dom"
 import './Products.css'
 
 export const ProductList = () => {
     const [products, setProducts] = useState([])
+    const history = useHistory()
 
     useEffect(
         () => {
@@ -16,46 +18,42 @@ export const ProductList = () => {
     )
 
     const [purchase, updatePurchase] = useState(
-        {
-            customerId: parseInt(localStorage.getItem("kk_customer")),
-            productId: '',
-            timestamp: Date.now()
-        }
+        { productId: '' }
     )
 
     const orderProduct = (event) => {
+        event.preventDefault()
+        const newPurchase = {
+            customerId: parseInt(localStorage.getItem("kk_customer")),
+            productId: purchase.productId,
+            timestamp: Date.now()
+        }
 
         const fetchOption = {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(purchase)
+            body: JSON.stringify(newPurchase)
         }
 
-        return fetch("http://localhost:8088/purchases", fetchOption)
+        return fetch('http://localhost:8088/purchases', fetchOption)
 
     }
-
-
-
 
     return (
         <>
             <h2>Products</h2>
-            <ul>
+            <ul className='productList'>
                 {products.map((product) => {
                     return <li key={`product--${product.id}`}><button className="orderButton" key={`order--${product.id}`}
-                        onClick={
-                            (event) => {
-                                const copy = { ...purchase }
-                                copy.productId = product.id
-                                updatePurchase(copy)
-                                orderProduct()
-                            }
-                        }
+                        onMouseEnter={(event) => {
+                            const copy = { ...purchase }
+                            copy.productId = product.id
+                            updatePurchase(copy)
+                        }}
+                        onClick={orderProduct}
                     >Order</button>{product.name}
-
                     </li>
                 })}
             </ul>

@@ -1,3 +1,10 @@
 .orderButton {
     margin-right: 10px;
 }
+
+.productList {
+    list-style-type: '🍭';
+}
+.productList li {
+    padding-left: 5px;
+}

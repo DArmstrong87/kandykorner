@@ -1,6 +1,12 @@
 .fireButton {
     margin-left: 15px;
     background-color: lightcoral;
+    border-radius: 10px;
+}
+.hireButton {
+    margin-left: 15px;
+    background-color: lightskyblue;
+    border-radius: 10px;
 }
 
 .employeeList {

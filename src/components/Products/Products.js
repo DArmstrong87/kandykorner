@@ -15,15 +15,10 @@ export const ProductList = () => {
         []
     )
 
-    const [purchase, updatePurchase] = useState(
-        { productId: '' }
-    )
-
-    const orderProduct = (event) => {
-        event.preventDefault()
+    const orderProduct = (id) => {
         const newPurchase = {
             customerId: parseInt(localStorage.getItem("kk_customer")),
-            productId: purchase.productId,
+            productId: id,
             timestamp: Date.now()
         }
 
@@ -34,9 +29,8 @@ export const ProductList = () => {
             },
             body: JSON.stringify(newPurchase)
         }
-
+        window.alert(`Item added to cart!`)
         return fetch('http://localhost:8088/purchases', fetchOption)
-
     }
 
     return (
@@ -45,12 +39,9 @@ export const ProductList = () => {
             <ul className='productList'>
                 {products.map((product) => {
                     return <li key={`product--${product.id}`}><button className="orderButton" key={`order--${product.id}`}
-                        onMouseEnter={(event) => {
-                            const copy = { ...purchase }
-                            copy.productId = product.id
-                            updatePurchase(copy)
+                        onClick={() => {
+                            orderProduct(product.id)
                         }}
-                        onClick={orderProduct}
                     >Order</button>{product.name}
                     </li>
                 })}

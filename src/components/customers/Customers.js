@@ -26,8 +26,6 @@ export const CustomerList = () => {
         []
     )
 
-
-
     return (
         <>
             <h2>Customers</h2>

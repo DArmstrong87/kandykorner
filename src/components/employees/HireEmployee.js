@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react"
 import { useHistory } from "react-router-dom";
+import { getLocations } from "../ApiManager";
 
 export const EmployeeForm = () => {
     const [locations, setLocations] = useState([])
 
     useEffect(
         () => {
-            fetch("http://localhost:8088/locations")
-                .then(res => res.json())
+            getLocations()
                 .then((locations) => {
                     setLocations(locations)
                 })

@@ -21,7 +21,13 @@ export const EmployeeList = () => {
         fetch(`http://localhost:8088/employees/${id}`, {
             method: "DELETE"
         })
-            .then(history.go())
+            .then(() => {
+                getEmployees()
+                    .then(employees => {
+                        setEmployees(employees)
+                    })
+            }, []
+            )
     }
 
     return (

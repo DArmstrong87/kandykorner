@@ -15,6 +15,7 @@ export const CustomerList = () => {
         },
         []
     )
+
     useEffect(
         () => {
             getAllPurchases()
@@ -25,6 +26,8 @@ export const CustomerList = () => {
         []
     )
 
+
+
     return (
         <>
             <h2>Customers</h2>
@@ -34,7 +37,7 @@ export const CustomerList = () => {
                 })}
             </ul>
 
-            <table key="table">
+            <table key="table" className='customerTable'>
                 <thead>
                     <tr>
                         <th>Customer</th>
@@ -43,11 +46,14 @@ export const CustomerList = () => {
                 </thead>
                 <tbody>
                     {customers.map(customer => {
-                        const customerPurchases = []
-                        customerPurchases.push(purchases.product)
+                        const foundPurchases = purchases.filter(
+                            purchase => {
+                                return purchase.customerId === customer.id
+                            }
+                        )
                         return <tr key={`row--${customer.id}`}>
                             <td>{customer.name}</td>
-                            <td>{customerPurchases.length}</td>
+                            <td>{foundPurchases.length}</td>
                         </tr>
                     })}
                 </tbody>

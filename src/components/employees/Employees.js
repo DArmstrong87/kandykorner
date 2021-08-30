@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { useHistory } from "react-router-dom"
+import './Employees.css'
 
 export const EmployeeList = () => {
     const [employees, setEmployees] = useState([])
@@ -16,6 +17,13 @@ export const EmployeeList = () => {
         []
     )
 
+    const fireEmployee = (id) => {
+        fetch(`http://localhost:8088/employees/${id}`, {
+            method: "DELETE"
+        })
+            .then(history.go())
+    }
+
     return (
         <>
             <div>
@@ -25,10 +33,12 @@ export const EmployeeList = () => {
             <h2>Employees</h2>
             <ul>
                 {employees.map(employee => {
-                    return <li key={`employee--${employee.id}`}>{employee.name}</li>
-                }
-                )
-                }
+                    return <li key={`employee--${employee.id}`}>{employee.name}
+                        <button className='fireButton' key={`fire--${employee.id}`}
+                            onClick={() => {fireEmployee(employee.id)}}
+                        >Fire Employee</button>
+                    </li>
+                })}
             </ul>
         </>
     )

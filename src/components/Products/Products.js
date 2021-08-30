@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react"
+import { getAllProducts } from "../ApiManager"
 import './Products.css'
 
 export const ProductList = () => {
@@ -6,8 +7,7 @@ export const ProductList = () => {
 
     useEffect(
         () => {
-            fetch("http://localhost:8088/products")
-                .then(res => res.json())
+            getAllProducts()
                 .then((products) => {
                     setProducts(products)
                 })

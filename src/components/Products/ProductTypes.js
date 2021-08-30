@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react"
+import { getProductTypes } from "../ApiManager"
 import './Products.css'
 
 export const ProductTypes = () => {
@@ -6,8 +7,7 @@ export const ProductTypes = () => {
 
     useEffect(
         () => {
-            fetch("http://localhost:8088/productTypes")
-                .then(res => res.json())
+            getProductTypes()
                 .then((productTypes) => {
                     setProductType(productTypes)
                 })

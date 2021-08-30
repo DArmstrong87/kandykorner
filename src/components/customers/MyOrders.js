@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react"
+import { getMyOrders } from "../ApiManager"
 import './Customers.css'
 
 export const Purchases = () => {
@@ -6,8 +7,7 @@ export const Purchases = () => {
 
     useEffect(
         () => {
-            fetch("http://localhost:8088/purchases?_expand=product&_expand=customer&customerId=1")
-                .then(res => res.json())
+            getMyOrders()
                 .then(purchases => {
                     setPurchases(purchases)
                 })

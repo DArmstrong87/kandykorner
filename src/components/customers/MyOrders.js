@@ -28,11 +28,19 @@ export const Purchases = () => {
             )
     }
 
-    const newLineItem = new Map()
-    for (const purchase of purchases){
-        newLineItem.set(purchase.productId, )
-        
+    const createNewLineItem = () => {
+        const purchaseMap = new Map()
+        for (const purchase of purchases) {
+            let key = { id: purchase.product.id, price: purchase.product.price }
+            let value = 1
+            purchaseMap.set(key, value)
+        }
+
+        return purchaseMap
     }
+
+    const result = createNewLineItem()
+    console.log(result)
 
     return (
         <>
@@ -48,6 +56,16 @@ export const Purchases = () => {
                     </li>
                 })}
             </ul>
+
+            {/* <table>
+                <thead>
+                    <td>Candy</td>
+                    <td>Quantity</td>
+                    <td>Price per Unit</td>
+                </thead>
+                <tbody>
+                </tbody>
+            </table> */}
         </>
     )
 }

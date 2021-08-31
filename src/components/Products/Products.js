@@ -29,7 +29,6 @@ export const ProductList = () => {
             },
             body: JSON.stringify(newPurchase)
         }
-        window.alert(`Item added to cart!`)
         return fetch('http://localhost:8088/purchases', fetchOption)
     }
 

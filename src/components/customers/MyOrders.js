@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react"
+import { nativeTouchData } from "react-dom/cjs/react-dom-test-utils.production.min"
 import { getMyOrders } from "../ApiManager"
 import './Customers.css'
 
@@ -12,8 +13,41 @@ export const Purchases = () => {
                     setPurchases(purchases)
                 })
         },
-        []
+        [],
     )
+
+    const createLineItem = () => {
+
+        const mappedPurchases = purchases.reduce(
+            (sum, current) => {
+                const setKey = { productId: current.product.id, price: current.product.price }
+                const key = JSON.stringify({
+                    customer: { id: current.customer, name: current.customer.name },
+                    customerId: current.customer.id,
+                    id: current.id,
+                    product: { id: current.product.id, name: current.product.name, productTypeId: current.product.productTypeId.id, price: current.product.price },
+                    productId: current.product.id,
+                    timestamp: current.timestamp
+                })
+                if (sum.has(key)) {
+                    let foundKey = sum.get(key)
+                    foundKey++
+                    sum.set(setKey, foundKey)
+                } else {
+                    sum.set(setKey, 1)
+                }
+                return sum
+            }, new Map()
+
+        )
+        return mappedPurchases
+    }
+
+    const newPurchases = createLineItem()
+
+    console.log(newPurchases)
+
+
 
     const deleteOrder = (id) => {
         fetch(`http://localhost:8088/purchases/${id}`, {
@@ -27,20 +61,6 @@ export const Purchases = () => {
             }, []
             )
     }
-
-    const createNewLineItem = () => {
-        const purchaseMap = new Map()
-        for (const purchase of purchases) {
-            let key = { id: purchase.product.id, price: purchase.product.price }
-            let value = 1
-            purchaseMap.set(key, value)
-        }
-
-        return purchaseMap
-    }
-
-    const result = createNewLineItem()
-    console.log(result)
 
     return (
         <>

@@ -4,6 +4,7 @@ import { CustomerList } from "./customers/Customers.js"
 import { Purchases } from "./customers/MyOrders.js"
 import { EmployeeList } from "./employees/Employees.js"
 import { EmployeeForm } from "./employees/HireEmployee.js"
+import { Inventory } from "./inventory/Inventory.js"
 import { Locations } from "./locations/Locations.js"
 import { ProductList } from "./Products/Products.js"
 import { ProductTypes } from "./Products/ProductTypes.js"
@@ -33,6 +34,9 @@ export const ApplicationViews = () => {
             </Route>
             <Route path="/customers">
                 <CustomerList />
+            </Route>
+            <Route path="/inventory">
+                <Inventory />
             </Route>
         </>
     )

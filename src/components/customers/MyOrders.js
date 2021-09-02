@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react"
-import { nativeTouchData } from "react-dom/cjs/react-dom-test-utils.production.min"
 import { getMyOrders } from "../ApiManager"
 import './Customers.css'
 

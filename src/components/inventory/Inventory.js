@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from "react"
-import { InventoryList } from "./InventoryList"
+import React, { useEffect } from "react"
 import { InventorySearch } from "./InventorySearch"
 
 export const Inventory = () => {
-    const [searchTerms, updateSearch] = useState([])
 
 
     useEffect(
@@ -15,7 +13,6 @@ export const Inventory = () => {
 
     return (<>
         <InventorySearch />
-        <InventoryList />
     </>
     )
 }

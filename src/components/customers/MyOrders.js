@@ -19,32 +19,36 @@ export const Purchases = () => {
 
         const mappedPurchases = purchases.reduce(
             (sum, current) => {
-                const setKey = { productId: current.product.id, price: current.product.price }
                 const key = JSON.stringify({
-                    customer: { id: current.customer, name: current.customer.name },
-                    customerId: current.customer.id,
-                    id: current.id,
-                    product: { id: current.product.id, name: current.product.name, productTypeId: current.product.productTypeId.id, price: current.product.price },
                     productId: current.product.id,
-                    timestamp: current.timestamp
+                    price: current.product.price
                 })
                 if (sum.has(key)) {
                     let foundKey = sum.get(key)
                     foundKey++
-                    sum.set(setKey, foundKey)
+                    sum.set(key, foundKey)
                 } else {
-                    sum.set(setKey, 1)
+                    sum.set(key, 1)
                 }
                 return sum
             }, new Map()
-
         )
-        return mappedPurchases
+
+        console.log('Mapped/Reduced:', mappedPurchases)
+
+        const unstringifiedArray = []
+        for (const item of mappedPurchases) {
+            unstringifiedArray.push([JSON.parse(item[0]), item[1]])
+        }
+        console.log('Array',unstringifiedArray)
+
+        return unstringifiedArray
     }
 
-    const newPurchases = createLineItem()
+    const aggregated = createLineItem()
 
-    console.log(newPurchases)
+    console.log('aggregated', aggregated[0][0].productId)
+
 
 
 
@@ -76,6 +80,15 @@ export const Purchases = () => {
                 })}
             </ul>
 
+                <ul>
+            {aggregated.map(
+                purchase => {
+                    return <li>ProductId: {aggregated[0][0].productId},
+                    Quantity: {aggregated[0][1]}</li>
+                }
+            )}
+            </ul>
+                
             {/* <table>
                 <thead>
                     <td>Candy</td>

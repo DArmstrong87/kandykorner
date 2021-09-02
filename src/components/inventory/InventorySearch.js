@@ -9,7 +9,6 @@ export const InventorySearch = () => {
 
     const findProducts = () => {
         const searchTermArray = searchTerms.terms.split(" ")
-        console.log("Search terms", searchTermArray)
         const foundMatchingProducts = products.filter(
             product => {
                 for (const term of searchTermArray) {
@@ -19,7 +18,6 @@ export const InventorySearch = () => {
                 }
             }
         )
-        console.log("Found matching products", foundMatchingProducts)
         return foundMatchingProducts
     }
 

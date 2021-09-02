@@ -4,6 +4,7 @@ import { CustomerList } from "./customers/Customers.js"
 import { Purchases } from "./customers/MyOrders.js"
 import { EmployeeList } from "./employees/Employees.js"
 import { EmployeeForm } from "./employees/HireEmployee.js"
+import { HomePage } from "./HomePage.js"
 import { Inventory } from "./inventory/Inventory.js"
 import { Locations } from "./locations/Locations.js"
 import { ProductList } from "./Products/Products.js"
@@ -14,6 +15,9 @@ import { ProductTypes } from "./Products/ProductTypes.js"
 export const ApplicationViews = () => {
     return (
         <>
+            <Route exact path="/">
+                <HomePage/>
+            </Route>
             <Route exact path="/products">
                 <ProductList/>
             </Route>

@@ -16,3 +16,7 @@
     margin: 0;
     text-align: center;
 }
+
+.navBar__h1 a:visited{
+    text-decoration: none;
+}

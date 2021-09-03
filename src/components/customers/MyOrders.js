@@ -41,12 +41,12 @@ export const Purchases = () => {
             }
         }
 
-        console.log('OrderMap',orderMap)
+        console.log('OrderMap', orderMap)
 
         return [...orderMap]
     }
-    const results = createLineItem()
-    console.log(results)
+    const aggregated = createLineItem()
+    console.log('Aggregated', aggregated)
 
     return (
         <>
@@ -64,10 +64,11 @@ export const Purchases = () => {
             </ul>
 
             <h2>My Orders Aggregated</h2>
-            <ul>
-                {results.map(
+            <ul className="myOrders">
+                {aggregated.map(
                     order => {
-                        return <li>{order[0]} |
+                        return <li key={`order--${order[0]}`}>
+                            {order[0]} |
                             Quantity: {order[1].total} |
                             Price/Unit: 💲{order[1].price.toFixed(2)}</li>
                     }
@@ -76,80 +77,3 @@ export const Purchases = () => {
         </>
     )
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const createLineItem = () => {
-
-//     const mappedPurchases = purchases.reduce(
-//         (sum, current) => {
-//             const key = JSON.stringify({
-//                 productId: current.product.id,
-//                 price: current.product.price
-//             })
-//             if (sum.has(key)) {
-//                 let foundKey = sum.get(key)
-//                 foundKey++
-//                 sum.set(key, foundKey)
-//             } else {
-//                 sum.set(key, 1)
-//             }
-//             return sum
-//         }, new Map()
-//     )
-
-//     console.log('Mapped/Reduced:', mappedPurchases)  // To delete
-
-//     const unstringifiedArray = []
-//     for (const item of mappedPurchases) {
-//         unstringifiedArray.push([JSON.parse(item[0]), item[1]])
-//     }
-//     console.log('Unstringified Array', unstringifiedArray)// To delete
-
-//     let newObjectArray = []
-//     console.log(newObjectArray)// To delete
-//     for (let i = 0; i < unstringifiedArray.length; i++) {
-//         newObjectArray.push(
-//             {
-//                 productId: unstringifiedArray[i][0].productId,
-//                 quantity: unstringifiedArray[i][1],
-//                 price: unstringifiedArray[i][0].price
-//             }
-//         )
-//     }
-
-//     console.log(newObjectArray)// To delete
-//     return newObjectArray
-// }
-
-// const aggregated = createLineItem()
-
-// console.log('aggregated', aggregated[0][0].productId)
-
-//Key aggregated[0][1].productId
-//Value aggregated[0][1]
-
-
-/* <ul className="myOrders">
-{aggregated.map(
-    order => {
-        return <li>ProductId: {order.productId} |
-            Quantity: {order.quantity} |
-            Price/Unit: 💲{order.price.toFixed(2)}</li>
-    }
-)}
-</ul> */

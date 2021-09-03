@@ -29,10 +29,12 @@ export const getMyOrders = () => {
     return fetch(`http://localhost:8088/purchases?_expand=product&_expand=customer&customerId=${user}`)
         .then(res => res.json())
 }
+
 export const getAllPurchases = () => {
     return fetch(`http://localhost:8088/purchases?_expand=product&_expand=customer`)
         .then(res => res.json())
 }
+
 export const getCustomerPurchases = (id) => {
     return fetch(`http://localhost:8088/purchases?_expand=product&_expand=customer&customer=${id}`)
         .then(res => res.json())

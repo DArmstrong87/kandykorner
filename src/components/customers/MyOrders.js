@@ -4,8 +4,6 @@ import './Customers.css'
 
 export const Purchases = () => {
     const [purchases, setPurchases] = useState([])
-    const [totals, setTotals] = useState(new Map())
-    console.log(...totals)
 
     useEffect(
         () => {
@@ -16,14 +14,6 @@ export const Purchases = () => {
         },
         []
     )
-
-    // useEffect(
-    //     () => {
-    //         setTotals(createLineItem())
-    //     },
-
-    //     []
-    // )
 
     const deleteOrder = (id) => {
         fetch(`http://localhost:8088/purchases/${id}`, {
@@ -43,17 +33,20 @@ export const Purchases = () => {
         const orderMap = new Map()
 
         for (const purchase of purchases) {
-            const key = purchase.product.id
+            const key = purchase.product.name
             if (orderMap.has(key)) {
                 orderMap.get(key).total++
             } else {
-                orderMap.set(key, { total: 1 })
+                orderMap.set(key, { total: 1, price: purchase.product.price })
             }
         }
 
-        console.log(orderMap)
-        return orderMap
+        console.log('OrderMap',orderMap)
+
+        return [...orderMap]
     }
+    const results = createLineItem()
+    console.log(results)
 
     return (
         <>
@@ -71,7 +64,15 @@ export const Purchases = () => {
             </ul>
 
             <h2>My Orders Aggregated</h2>
-
+            <ul>
+                {results.map(
+                    order => {
+                        return <li>{order[0]} |
+                            Quantity: {order[1].total} |
+                            Price/Unit: 💲{order[1].price.toFixed(2)}</li>
+                    }
+                )}
+            </ul>
         </>
     )
 }

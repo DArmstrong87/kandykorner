@@ -5,7 +5,6 @@ import './Customers.css'
 export const CustomerList = () => {
     const [customers, setCustomers] = useState([])
     const [purchases, setPurchases] = useState([])
-
     useEffect(
         () => {
             getCustomers()
@@ -25,6 +24,23 @@ export const CustomerList = () => {
         },
         []
     )
+
+    const addCandiesBoughtProperty = () => {
+        const copy = [...customers]
+
+        copy.map(customer => {
+            const foundPurchases = purchases.filter(
+                purchase => {
+                    return purchase.customerId === customer.id
+                }
+            )
+            return customer.candiesBought = foundPurchases.length
+        })
+        return copy
+    }
+    addCandiesBoughtProperty()
+    console.log(customers)
+    customers.sort((a,b) => (a.candiesBought < b.candiesBought) ? 1 : -1)
 
     return (
         <>

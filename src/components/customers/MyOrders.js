@@ -17,13 +17,13 @@ export const Purchases = () => {
         []
     )
 
-    useEffect(
-        () => {
-            setTotals(createLineItem())
-        },
+    // useEffect(
+    //     () => {
+    //         setTotals(createLineItem())
+    //     },
 
-        []
-    )
+    //     []
+    // )
 
     const deleteOrder = (id) => {
         fetch(`http://localhost:8088/purchases/${id}`, {
